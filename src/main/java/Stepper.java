@@ -8,13 +8,13 @@ public class Stepper {
 
 	private final GpioController gpio = GpioFactory.getInstance();
 
-	private final GpioPinDigitalOutput dir = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_17, "direction+",
+	private final GpioPinDigitalOutput dir = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "direction+",
 			PinState.HIGH);
 
 	private final GpioPinDigitalOutput ena = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "enable",
 			PinState.HIGH);
 
-	private final GpioPinDigitalOutput pul = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27, "step+", PinState.HIGH);
+	private final GpioPinDigitalOutput pul = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "step+", PinState.HIGH);
 
 	public Stepper()
 	{
