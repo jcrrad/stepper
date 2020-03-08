@@ -25,10 +25,14 @@ public class Stepper {
 		try {
 			for (int i = 0; i < 500; i++) {
 				System.out.println("i: " + i);
+				System.out.println("\tdir.low()");
 				dir.low();
+				System.out.println("\tena.high()");
 				ena.high();
+				System.out.println("\tpul.high()");
 				pul.high();
 				Thread.sleep(500);
+				System.out.println("\tpul.low()");
 				pul.low();
 				Thread.sleep(500);
 			}
