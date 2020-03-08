@@ -23,14 +23,14 @@ public class Stepper {
 
 	public void spin(int num) {
 		try {
-			for (int i = 0; i < 64000; i++) {
+			for (int i = 0; i < 500; i++) {
 				System.out.println("i: " + i);
 				dir.low();
 				ena.high();
 				pul.high();
-				Thread.sleep(50);
+				Thread.sleep(500);
 				pul.low();
-				Thread.sleep(50);
+				Thread.sleep(500);
 			}
 		}catch(Exception e)
 		{
