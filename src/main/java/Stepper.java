@@ -11,7 +11,7 @@ public class Stepper {
 	private final GpioPinDigitalOutput pulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "pulse+",
 			PinState.HIGH);
 
-	private final GpioPinDigitalOutput step = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "step+", PinState.HIGH);
+	private final GpioPinDigitalOutput step = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_11, "step+", PinState.HIGH);
 
 	public Stepper()
 	{
@@ -25,7 +25,7 @@ public class Stepper {
 				System.out.println("HIGH");
 				step.high();
 				Thread.sleep(500);
-				System.out.println("HIGH");
+				System.out.println("Low");
 				step.low();
 				Thread.sleep(500);
 			}
