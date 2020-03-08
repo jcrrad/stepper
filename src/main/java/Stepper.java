@@ -8,30 +8,33 @@ public class Stepper {
 
 	private final GpioController gpio = GpioFactory.getInstance();
 
-	private final GpioPinDigitalOutput pulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, "pulse+",
+	private final GpioPinDigitalOutput dir = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_17, "direction+",
 			PinState.HIGH);
 
-	private final GpioPinDigitalOutput step = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_11, "step+", PinState.HIGH);
+	private final GpioPinDigitalOutput ena = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "enable",
+			PinState.HIGH);
+
+	private final GpioPinDigitalOutput pul = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27, "step+", PinState.HIGH);
 
 	public Stepper()
 	{
 		System.out.println("new Stepper made");
 	}
 
-	public void spin(int num)
-	{
+	public void spin(int num) {
 		try {
-			for (int i = 0; i < num; i++) {
-				System.out.println("HIGH");
-				step.high();
-				Thread.sleep(500);
-				System.out.println("Low");
-				step.low();
-				Thread.sleep(500);
+			for (int i = 0; i < 64000; i++) {
+				System.out.println("i: " + i);
+				dir.low();
+				ena.high();
+				pul.high();
+				Thread.sleep(50);
+				pul.low();
+				Thread.sleep(50);
 			}
 		}catch(Exception e)
 		{
-			System.out.println("Error: " + e);
+			System.out.println("ERROR : " + e);
 		}
 	}
 }
